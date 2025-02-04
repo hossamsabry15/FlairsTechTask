@@ -1,0 +1,11 @@
+{
+  "UserMail": {
+    "ApiTimeStamp": "AutoBot_ApiTimeStamp"
+  },
+  "UserPassword": "p@ssw0rd",
+  "InvalidUserMail": "AutoBot_Gui",
+  "WrongUserMail": "WrongEmail@builditofaz.com",
+  "WrongUserPassword": "WrongUserPassword",
+  "errorMessageInvalidEmailFormat": "Please enter a valid email address.",
+  "errorMessageIncorrectEmailOrPassword": "Incorrect email or password. Please try again."
+}

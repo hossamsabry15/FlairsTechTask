@@ -21,6 +21,13 @@ public class ElementActions {
         System.out.println("Clicking on element: " + driver.findElement(elementLocator).getAccessibleName() + "and it's locator is: " + elementLocator);
         driver.findElement(elementLocator).click();
     }
+    @Step("Enter data to Element: {elementLocator}")
+    public static void enterData(WebDriver driver, By elementLocator, String data) {
+        elementWaitingStrategy(driver, elementLocator);
+        wait.until(ExpectedConditions.elementToBeClickable(elementLocator));
+        System.out.println("Entering data to element: " + driver.findElement(elementLocator).getAccessibleName() + "and it's locator is: " + elementLocator);
+        driver.findElement(elementLocator).sendKeys(data);
+    }
 
 
     private static void elementWaitingStrategy(WebDriver driver, By elementLocator) {
