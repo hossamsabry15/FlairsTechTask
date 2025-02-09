@@ -12,7 +12,7 @@ import java.time.Duration;
 public class ElementActions {
     private static WebDriver driver;
     private static Wait<WebDriver> wait;
-    private static int defaultWaitTime = 10;
+    private static int defaultWaitTime = Integer.parseInt(System.getProperty("waits"));
 
     @Step("Click on Element: {elementLocator}")
     public static void click(WebDriver driver, By elementLocator) {

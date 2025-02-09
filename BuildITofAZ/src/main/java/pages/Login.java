@@ -37,7 +37,7 @@ public class Login {
     }
     @Step("Enter the password {password}")
     public Login enterPassword(String password) {
-        ElementActions.enterData(driver, emailField, password);
+        ElementActions.enterData(driver, passwordField, password);
         return this;
     }
     @Step("Click on 'Reset password' Button")
