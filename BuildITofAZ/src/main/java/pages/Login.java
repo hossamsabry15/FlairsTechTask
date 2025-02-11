@@ -15,14 +15,14 @@ public class Login {
         this.driver = driver;
     }
     // Locators
-    private By emailField = By.id("");
-    private By passwordField = By.id("");
-    private By resetPasswordButton = By.id("");
+    private By emailField = By.name("email");
+    private By passwordField = By.name("password");
+    private By resetPasswordButton = By.cssSelector("resetPassword");
     private By registerButton = By.id("");
     private By loginButton = By.id("");
     private By errorMessageInvalidEmailFormat = By.id("");
     private By errorMessageIncorrectEmailOrPassword = By.id("");
-    private By loginPage = By.id("");
+    private By loginPage = By.cssSelector("[data-cy='CardBody']");
 
     /////////// Actions \\\\\\\\\\\\
     @Step("Navigate to Login Page")
@@ -59,6 +59,7 @@ public class Login {
     @Step("Validate on 'Login' page")
     public Login validateOnLoginPage() {
         driver.findElement(loginPage).isDisplayed();
+        System.out.println("Validating on Login Page");
         return this;
     }
     @Step("Assert on error message when entering a invalid email, Should be {expectedMessage}")

@@ -12,6 +12,7 @@ public class Login {
     // Variables
     WebDriver driver;
     JsonFileManager testData;
+    private String timeStamp;
 
 
     // Test Cases
@@ -61,6 +62,7 @@ public class Login {
 
     @BeforeMethod
     public void beforeMethod() {
+        timeStamp = String.valueOf(System.currentTimeMillis());
         driver = DriverFactory.initDriver();
         new pages.Login(driver)
                 .navigate()

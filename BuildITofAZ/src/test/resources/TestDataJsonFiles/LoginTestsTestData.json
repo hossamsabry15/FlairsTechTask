@@ -1,8 +1,9 @@
 {
   "UserMail": {
-    "ApiTimeStamp": "AutoBot_ApiTimeStamp"
+    "ApiTimeStamp": "sari@builditofaz.com"
   },
-  "UserPassword": "p@ssw0rd",
+  "Email": "sari@builditofaz.com",
+  "Password": "Liveurlife102!",
   "InvalidUserMail": "AutoBot_Gui",
   "WrongUserMail": "WrongEmail@builditofaz.com",
   "WrongUserPassword": "WrongUserPassword",
