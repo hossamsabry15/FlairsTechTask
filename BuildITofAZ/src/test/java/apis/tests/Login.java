@@ -3,6 +3,8 @@ package apis.tests;
 import apis.ApisAccountManagement;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,22 +26,48 @@ public class Login {
         );
 //        api.createRegisterUserAccount(
 //                        testData.getTestData("UserName"),
-//                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@gizasystems.com",
+//                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@builditofaz.com",
 //                        testData.getTestData("UserPassword")
 //                )
 //                .validateUserCreatedRegistered()
 //                .logIntoUserAccount(
-//                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@gizasystems.com",
+//                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@builditofaz.com",
 //                        testData.getTestData("UserPassword")
 //                )
 //                .validateUserLoggedIn()
 //                .deleteUserAccount(
-//                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@gizasystems.com",
+//                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@builditofaz.com",
 //                        testData.getTestData("UserPassword")
 //                )
 //                .validateDeleteUser()
-//                .validateUserNotFound(testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@gizasystems.com");
+//                .validateUserNotFound(testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@builditofaz.com");
     }
+//    @Test
+//    public void restAssuredTest() {
+//        String body = """
+//                {
+//                    "username" : "sari@builditofaz.com",
+//                    "password" : "Liveurlife102!"
+//                }
+//                """;
+//
+//        // Capture response
+//        Response response = RestAssured.
+//                given()
+//                .header("Content-Type", "application/json")
+//                .body(body)
+//                .log().all()
+//                .when()
+//                .post("https://api.dev.gunsync.com/v1/auth/login");
+//
+//        // Print response body
+//        System.out.println("Response Body: " + response.getBody().asString());
+//
+//        // Validate response and log body
+//        response.then()
+//                .statusCode(200)
+//                .log().body();
+//    }
 
     //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
