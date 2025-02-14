@@ -72,7 +72,7 @@ public class Login {
     //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
-        testData = new JsonFileManager("src/test/resources/TestDataJsonFiles/LoginUserApisTestsTestData.json");
+        testData = new JsonFileManager("src/test/resources/TestDataJsonFiles/Login/LoginUserApisTestsTestData.json");
     }
 
     @BeforeMethod

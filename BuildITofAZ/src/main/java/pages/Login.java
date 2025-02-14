@@ -64,12 +64,12 @@ public class Login {
     }
     @Step("Assert on error message when entering a invalid email, Should be {expectedMessage}")
     public Login assertOnErrorMessageInvalidEmailFormat(String expectedMessage) {
-        Assert.assertEquals(driver.findElement(errorMessageInvalidEmailFormat).getText(), expectedMessage);
+        Assert.assertEquals(ElementActions.getElementText(driver, errorMessageInvalidEmailFormat), expectedMessage);
         return this;
     }
     @Step("Assert on error message when entering an incorrect email or password, Should be {expectedMessage}")
     public Login assertOnErrorMessageIncorrectEmailOrPassword(String expectedMessage) {
-        Assert.assertEquals(driver.findElement(errorMessageIncorrectEmailOrPassword).getText(), expectedMessage);
+        Assert.assertEquals(ElementActions.getElementText(driver, errorMessageIncorrectEmailOrPassword), expectedMessage);
         return this;
     }
 }

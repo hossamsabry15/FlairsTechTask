@@ -20,6 +20,8 @@ public class UserRegistrationAccountVerification {
     private By fourthCodeDigit = By.id("");
     private By fifthCodeDigit = By.id("");
     private By sixCodeDigit = By.id("");
+    private By seventhCodeDigit = By.id("");
+    private By eighthCodeDigit = By.id("");
     private By resendButton = By.id("");
     private By backButton = By.id("");
     private By verifyButton = By.id("");
@@ -29,12 +31,14 @@ public class UserRegistrationAccountVerification {
     /////////// Actions \\\\\\\\\\\\
     @Step("Enter the verification code {code}")
     public UserRegistrationAccountVerification enterVerificationCode(String[] code) {
-        ElementActions.enterData(driver, fifthCodeDigit, code[0]);
+        ElementActions.enterData(driver, firstCodeDigit, code[0]);
         ElementActions.enterData(driver, secondCodeDigit, code[1]);
         ElementActions.enterData(driver, thirdCodeDigit, code[2]);
         ElementActions.enterData(driver, fourthCodeDigit, code[3]);
         ElementActions.enterData(driver, fifthCodeDigit, code[4]);
         ElementActions.enterData(driver, sixCodeDigit, code[5]);
+        ElementActions.enterData(driver, seventhCodeDigit, code[6]);
+        ElementActions.enterData(driver, eighthCodeDigit, code[7]);
         return this;
     }
     @Step("Click on 'Resend' Button")
@@ -52,6 +56,7 @@ public class UserRegistrationAccountVerification {
         ElementActions.click(driver, verifyButton);
         return this;
     }
+
     ///////////////// Validations \\\\\\\\\\\\
     @Step("Validate on 'Verification Code' page")
     public UserRegistrationAccountVerification validateOnVerificationCodePage(String expectedText) {
