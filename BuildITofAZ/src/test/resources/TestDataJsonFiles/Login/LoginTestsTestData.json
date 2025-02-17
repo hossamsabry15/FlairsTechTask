@@ -1,12 +1,9 @@
 {
-  "UserMail": {
-    "ApiTimeStamp": "sari@builditofaz.com"
-  },
-  "Email": "sari@builditofaz.com",
-  "Password": "Liveurlife102!",
-  "InvalidUserMail": "AutoBot_Gui",
-  "WrongUserMail": "WrongEmail@builditofaz.com",
-  "WrongUserPassword": "WrongUserPassword",
+  "Email": "hossam@builditofaz.com",
+  "Password": "Aa@12345!",
+  "InvalidUserMail": "hossambuilditofaz.com",
+  "WrongUserMail": "wrongtest@builditofaz.com",
+  "WrongPassword": "WrongPassword",
   "errorMessageInvalidEmailFormat": "Please enter a valid email address.",
   "errorMessageIncorrectEmailOrPassword": "Incorrect email or password. Please try again."
 }

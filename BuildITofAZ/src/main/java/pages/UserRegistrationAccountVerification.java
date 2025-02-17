@@ -14,19 +14,17 @@ public class UserRegistrationAccountVerification {
     }
 
     // Locators
-    private By firstCodeDigit = By.id("");
-    private By secondCodeDigit = By.id("");
-    private By thirdCodeDigit = By.id("");
-    private By fourthCodeDigit = By.id("");
-    private By fifthCodeDigit = By.id("");
-    private By sixCodeDigit = By.id("");
-    private By seventhCodeDigit = By.id("");
-    private By eighthCodeDigit = By.id("");
-    private By resendButton = By.id("");
-    private By backButton = By.id("");
-    private By verifyButton = By.id("");
-    private By errorMessageWrongCode = By.id("");
-    private By verificationCodePage = By.id("");
+    private By firstCodeDigit = By.cssSelector("([data-cy='confirmationCodeField_input'])[1]");
+    private By secondCodeDigit = By.cssSelector("([data-cy='confirmationCodeField_input'])[2]");
+    private By thirdCodeDigit = By.cssSelector("([data-cy='confirmationCodeField_input'])[3]");
+    private By fourthCodeDigit = By.cssSelector("([data-cy='confirmationCodeField_input'])[4]");
+    private By fifthCodeDigit = By.cssSelector("([data-cy='confirmationCodeField_input'])[5]");
+    private By sixCodeDigit = By.cssSelector("([data-cy='confirmationCodeField_input'])[6]");
+    private By resendButton = By.cssSelector("[data-cy='resendButton']");
+    private By backButton = By.cssSelector("[data-cy='backButton']");
+    private By verifyButton = By.cssSelector("[data-cy='submitVerifyButton']");
+    private By errorMessageWrongCode = By.xpath("//p[@class=\"sc-19e7a3e9-0 jaVBfY\"]");
+    private By verificationCodePage = By.cssSelector("[data-cy='verifyForm']");
 
     /////////// Actions \\\\\\\\\\\\
     @Step("Enter the verification code {code}")
@@ -37,8 +35,6 @@ public class UserRegistrationAccountVerification {
         ElementActions.enterData(driver, fourthCodeDigit, code[3]);
         ElementActions.enterData(driver, fifthCodeDigit, code[4]);
         ElementActions.enterData(driver, sixCodeDigit, code[5]);
-        ElementActions.enterData(driver, seventhCodeDigit, code[6]);
-        ElementActions.enterData(driver, eighthCodeDigit, code[7]);
         return this;
     }
     @Step("Click on 'Resend' Button")
