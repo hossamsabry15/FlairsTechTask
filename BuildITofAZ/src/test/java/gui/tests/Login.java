@@ -57,7 +57,7 @@ public class Login {
     @BeforeClass
     public void beforeClass() {
         PropertiesReader.loadProperties();
-        testData = new JsonFileManager("src/test/resources/TestDataJsonFiles/LoginTestsTestData.json");
+        testData = new JsonFileManager("src/test/resources/TestDataJsonFiles/Login/LoginTestsTestData.json");
     }
 
     @BeforeMethod

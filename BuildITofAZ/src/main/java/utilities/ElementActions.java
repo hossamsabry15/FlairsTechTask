@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,7 +30,17 @@ public class ElementActions {
         driver.findElement(elementLocator).sendKeys(data);
     }
 
-
+    @Step("Select by visible text: {visibleText}")
+    public static void selectByVisibleText(WebDriver driver, By elementLocator, String visibleText) {
+        elementWaitingStrategy(driver, elementLocator);
+        Select select = new Select(driver.findElement(elementLocator));
+        select.selectByVisibleText(visibleText);
+    }
+    @Step("Get text of Element: {elementLocator}")
+    public static String getElementText(WebDriver driver, By elementLocator) {
+        elementWaitingStrategy(driver, elementLocator);
+        return driver.findElement(elementLocator).getText();
+    }
     private static void elementWaitingStrategy(WebDriver driver, By elementLocator) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(defaultWaitTime));
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));

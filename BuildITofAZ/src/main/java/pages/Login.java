@@ -15,14 +15,14 @@ public class Login {
         this.driver = driver;
     }
     // Locators
-    private By emailField = By.name("email");
-    private By passwordField = By.name("password");
-    private By resetPasswordButton = By.cssSelector("resetPassword");
-    private By registerButton = By.id("");
-    private By loginButton = By.id("");
-    private By errorMessageInvalidEmailFormat = By.id("");
-    private By errorMessageIncorrectEmailOrPassword = By.id("");
-    private By loginPage = By.cssSelector("[data-cy='CardBody']");
+    private By emailField = By.cssSelector("[data-cy='emailField']");
+    private By passwordField = By.cssSelector("[data-cy='passwordField']");
+    private By resetPasswordButton = By.cssSelector("[data-cy='resetButton']");
+    private By registerButton = By.cssSelector("[data-cy='registerButton']");
+    private By loginButton = By.cssSelector("[data-cy='submitButton']");
+    private By errorMessageInvalidEmailFormat = By.xpath("//p[@class=\"sc-19e7a3e9-0 crahxJ\"]");
+    private By errorMessageIncorrectEmailOrPassword = By.xpath("//p[@class=\"sc-19e7a3e9-0 jaVBfy\"]");
+    private By loginPage = By.id("loginForm");
 
     /////////// Actions \\\\\\\\\\\\
     @Step("Navigate to Login Page")
@@ -40,23 +40,23 @@ public class Login {
         ElementActions.enterData(driver, passwordField, password);
         return this;
     }
-    @Step("Click on 'Reset password' Button")
+    @Step("Click on 'Reset password ' Button")
     public Login clickOnResetPassword() {
         ElementActions.click(driver, resetPasswordButton);
         return this;
     }
-    @Step("Click on 'Login' Button")
+    @Step("Click on 'Login ' Button")
     public Login clickOnLogin() {
         ElementActions.click(driver, loginButton);
         return this;
     }
-    @Step("Click on 'Register' Button")
+    @Step("Click on 'Register ' Button")
     public Login clickOnRegister() {
         ElementActions.click(driver, registerButton);
         return this;
     }
     ///////////////// Validations \\\\\\\\\\\\
-    @Step("Validate on 'Login' page")
+    @Step("Validate on 'Login ' page")
     public Login validateOnLoginPage() {
         driver.findElement(loginPage).isDisplayed();
         System.out.println("Validating on Login Page");
@@ -64,12 +64,12 @@ public class Login {
     }
     @Step("Assert on error message when entering a invalid email, Should be {expectedMessage}")
     public Login assertOnErrorMessageInvalidEmailFormat(String expectedMessage) {
-        Assert.assertEquals(driver.findElement(errorMessageInvalidEmailFormat).getText(), expectedMessage);
+        Assert.assertEquals(ElementActions.getElementText(driver, errorMessageInvalidEmailFormat), expectedMessage);
         return this;
     }
     @Step("Assert on error message when entering an incorrect email or password, Should be {expectedMessage}")
     public Login assertOnErrorMessageIncorrectEmailOrPassword(String expectedMessage) {
-        Assert.assertEquals(driver.findElement(errorMessageIncorrectEmailOrPassword).getText(), expectedMessage);
+        Assert.assertEquals(ElementActions.getElementText(driver, errorMessageIncorrectEmailOrPassword), expectedMessage);
         return this;
     }
 }

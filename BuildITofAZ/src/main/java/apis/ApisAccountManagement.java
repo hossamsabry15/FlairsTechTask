@@ -15,16 +15,18 @@ public class ApisAccountManagement {
 
     // Variables
     private String baseUrl = PropertiesReader.getProperty("apisBaseUrl");
-
+    private String accessToken;
+    private int useId;
+    private Response deleteResponse;
     // Constructor
     public ApisAccountManagement() {
         RestAssured.baseURI = baseUrl;
     }
 
     // Services
-    private static final String createAccount_serviceName = "/register";
-    private static final String loginToAccount_serviceName = "/login";
-    private static final String deleteAccount_serviceName = "/delete";
+    private static final String createAccount_serviceName = "/auth/register";
+    private static final String loginToAccount_serviceName = "/auth/login";
+    private static final String deleteAccount_serviceName = "/user/";
     private static final String getUserDetailByEmail_serviceName = "/getUserDetailByEmail";
 
     //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
@@ -67,28 +69,33 @@ public class ApisAccountManagement {
         response.then().statusCode(SUCCESS) // Assuming 200 is a success response
                 .log().body();
 
-        // Extract Access Token (Ensure the key is correct)
-        String accessToken = response.jsonPath().getString("accessToken"); // Replace with actual key
+        //Extract Access Token (Ensure the key is correct)
+        accessToken = response.jsonPath().getString("data.accessToken"); // Replace with actual key
+
+        //Extract User ID (Ensure the key is correct)
+        useId = response.jsonPath().getInt("data.user.id"); // Replace with actual key
 
         System.out.println("Access Token: " + accessToken);
+        System.out.println("User ID: " + useId);
 
         // Configure RestAssured to Automatically Add Token in Every Request
-        RestAssured.requestSpecification = given()
-                .header("Authorization", "Bearer " + accessToken)
-                .contentType(ContentType.JSON);
+        RestAssured.filters((requestSpec, responseSpec, ctx) -> {
+            requestSpec.header("Authorization", "Bearer " + accessToken);
+            return ctx.next(requestSpec, responseSpec);
+        });
         return this;
     }
 
     @Step("API Delete User Account")
-    public ApisAccountManagement deleteUserAccount(String email, String pass) {
-        String body = String.format("email=%s&password=%s", email, pass);
+    public ApisAccountManagement deleteUserAccount() {
 
-        Response response = given()
+        deleteResponse = given()
                 .contentType(ContentType.JSON)
-                .body(body)
-                .delete(deleteAccount_serviceName);
+                .log().all()
+                .when()
+                .delete(deleteAccount_serviceName + useId);
 
-        response.then().statusCode(SUCCESS);
+        deleteResponse.then().statusCode(SUCCESS);
         return this;
     }
 
@@ -120,8 +127,7 @@ public class ApisAccountManagement {
 
     @Step("Validate Account Deleted")
     public ApisAccountManagement validateDeleteUser() {
-        Response response = given().get(deleteAccount_serviceName);
-        response.then().body("message", equalTo("Account deleted!"));
+        deleteResponse.then().body("message", equalTo("User registered successfully."));
         return this;
     }
 

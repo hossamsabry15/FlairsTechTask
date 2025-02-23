@@ -11,7 +11,7 @@ public class Dashboard {
         this.driver = driver;
     }
     // Locators
-    private By dashboardPage = By.id("");
+    private By dashboardPage = By.xpath("//div[@class=\"sc-2bf5a118-0 jBGPdA\"]");
 
     /////////// Actions \\\\\\\\\\\\
 
