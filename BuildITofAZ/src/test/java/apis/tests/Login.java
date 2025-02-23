@@ -20,10 +20,16 @@ public class Login {
     @Test(description = "Login User Test - API - Time Stamp")
     @Description("Given that I am a registered user, When I click in Signup/Login button, And I entered valid email and valid password, And I clicked on Login button, Then I should be logged in successfully to the system")
     public void loginUserTestApi() {
-        api.logIntoUserAccount(
-                testData.getTestData("Email"),
-                testData.getTestData("Password")
-        );
+        api.
+//                createRegisterUserAccount(
+//                testData.getTestData("companyName"),
+//                testData.getTestData("Email2"),
+//                testData.getTestData("Password2")).
+                logIntoUserAccount(
+                testData.getTestData("Email2"),
+                testData.getTestData("Password2")).
+                deleteUserAccount().
+                validateDeleteUser();
 //        api.createRegisterUserAccount(
 //                        testData.getTestData("UserName"),
 //                        testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@builditofaz.com",
